@@ -43,5 +43,9 @@ public class EnemySpawner : MonoBehaviour
         sliderClone.transform.SetParent(canvasTransform);
         
         sliderClone.transform.localScale = Vector3.one;
+
+        sliderClone.GetComponent<SliderPositionAutoSetter>().Setup(enemy.transform);
+
+        sliderClone.GetComponent<EnemyHPViewer>().Setup(enemy.GetComponent<EnemyHP>());
     }
 }
