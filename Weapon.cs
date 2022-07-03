@@ -4,14 +4,29 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField]
-    private GameObject  projectilePrefab;
+    private GameObject projectilePrefab;
     [SerializeField]
     private float attackRate = 0.1f;
-    private int attackLevel = 3;
+    [SerializeField]
+    private int maxAttackLevel = 3;
+
+    private int attackLevel = 1;
 
     [SerializeField]
     private GameObject boomPrefab;
     private int boomCount = 3;
+
+    public int BoomCount
+    {
+        set => boomCount = Mathf.Max(0, value);
+        get => boomCount;
+    }
+
+    public int AttackLevel
+    {
+        set => attackLevel = Mathf.Clamp(value, 1, maxAttackLevel);
+        get => attackLevel;
+    }
 
     public void StartFiring()
     {
@@ -25,9 +40,9 @@ public class Weapon : MonoBehaviour
 
     public void StartBoom()
     {
-        if (boomCount > 0 )
+        if (boomCount > 0)
         {
-            boomCount--;
+            boomCount --;
             Instantiate(boomPrefab, transform.position, Quaternion.identity);
         }
     }

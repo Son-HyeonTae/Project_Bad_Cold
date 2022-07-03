@@ -6,13 +6,15 @@ public class PlayerBoom : MonoBehaviour
     [SerializeField]
     private AnimationCurve curve;
     [SerializeField]
+    private int damage = 100;
+    
     private float boomDelay = 0.5f;
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-
+        
         StartCoroutine("MoveToCenter");
     }
 
@@ -39,17 +41,27 @@ public class PlayerBoom : MonoBehaviour
     public void OnBoom()
     {
         GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
-
-        GameObject[] meteorites = GameObject.FindGameObjectsWithTag("Meteorite");
-
-        for (int i = 0; i < enemys.Length; ++i )
+        for (int i = 0; i < enemys.Length; i++)
         {
             enemys[i].GetComponent<Enemy>().OnDie();
         }
 
+        GameObject[] meteorites = GameObject.FindGameObjectsWithTag("Meteorite");
         for (int i = 0; i < meteorites.Length; ++i)
         {
             meteorites[i].GetComponent<Meteorite>().OnDie();
+        }
+
+        GameObject[] projectils = GameObject.FindGameObjectsWithTag("EnemyProjectile");
+        for (int i=0; i < projectils.Length; ++i)
+        {
+            projectils[i].GetComponent<EnemyProjectile>().OnDie();
+        }
+
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+        if (boss != null)
+        {
+            boss.GetComponent<BossHP>().TakeDamage(damage);
         }
 
         Destroy(gameObject);

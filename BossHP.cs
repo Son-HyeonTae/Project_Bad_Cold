@@ -1,13 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyHP : MonoBehaviour
+public class BossHP : MonoBehaviour
 {
     [SerializeField]
-    private float maxHP = 4;
-
+    private float maxHP = 1000;
     private float currentHP;
-    private Enemy enemy;
     private SpriteRenderer spriteRenderer;
 
     public float MaxHP => maxHP;
@@ -16,7 +14,6 @@ public class EnemyHP : MonoBehaviour
     private void Awake()
     {
         currentHP = maxHP;
-        enemy = GetComponent<Enemy>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -29,7 +26,7 @@ public class EnemyHP : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            enemy.OnDie();
+
         }
     }
 

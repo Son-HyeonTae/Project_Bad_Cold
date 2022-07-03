@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHPViewer : MonoBehaviour{
+public class BossHPViewer : MonoBehaviour
+{
     [SerializeField]
-    private PlayerHP playerHP;
+    private BossHP bossHP;
     private Slider sliderHP;
 
     private void Awake()
@@ -13,6 +14,6 @@ public class PlayerHPViewer : MonoBehaviour{
 
     private void Update()
     {
-        sliderHP.value = playerHP.CurrentHP / playerHP.MaxHP;
+        sliderHP.value = bossHP.CurrentHP / bossHP.MaxHP;
     }
 }

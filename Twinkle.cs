@@ -9,7 +9,7 @@ public class Twinkle : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        
         StartCoroutine("TwinkleLoop");
     }
 

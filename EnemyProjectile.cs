@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Meteorite : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 5;
+    private int damage = 1;
     [SerializeField]
     private GameObject explosionPrefab;
 
@@ -13,7 +13,7 @@ public class Meteorite : MonoBehaviour
         {
             collision.GetComponent<PlayerHP>().TakeDamage(damage);
 
-            OnDie();
+            Destroy(gameObject);
         }
     }
 
