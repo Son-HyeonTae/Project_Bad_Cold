@@ -4,7 +4,7 @@ using TMPro;
 public class ResultScoreViewer : MonoBehaviour
 {
     private TextMeshProUGUI textResultScore;
-
+    
     private void Awake()
     {
         textResultScore = GetComponent<TextMeshProUGUI>();
@@ -13,4 +13,4 @@ public class ResultScoreViewer : MonoBehaviour
 
         textResultScore.text = "Result Score " + score;
     }
-}
+}  

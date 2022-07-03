@@ -1,6 +1,6 @@
 using UnityEngine;
 
- [CreateAssetMenu]
+[CreateAssetMenu]
 public class StageData : ScriptableObject
 {
     [SerializeField]
@@ -11,10 +11,3 @@ public class StageData : ScriptableObject
     public Vector2 LimitMin => limitMin;
     public Vector2 LimitMax => limitMax;
 }
-
-/*
-  File : StageData.cs
-  Desc
-   : 현재 스테이지의 화면 내 범위
-   : 에셋 데이터로 저장 후 정보를 불러와 사용
-*/

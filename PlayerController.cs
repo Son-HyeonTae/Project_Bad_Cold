@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         movement2D = GetComponent<Movement2D>();
-        animator = GetComponent<Animator>();
         weapon = GetComponent<Weapon>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        // 플레이어 캐릭터가 화면 범위 바깥으로 나가지 못하도록 함
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, stageData.LimitMin.x, stageData.LimitMax.x),
                                          Mathf.Clamp(transform.position.y, stageData.LimitMin.y, stageData.LimitMax.y));
     }
@@ -76,16 +75,7 @@ public class PlayerController : MonoBehaviour
     public void OnDieEvent()
     {
         PlayerPrefs.SetInt("Score", score);
-
+        
         SceneManager.LoadScene(nextSceneName);
     }
 }
-
-/*
-  File : PlayerController.cs
-  Dosc
-   : 플래이어 캐릭터에 부착하여 사용
-
-  Function
-   : NULL
-*/

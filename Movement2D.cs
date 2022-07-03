@@ -17,12 +17,3 @@ public class Movement2D : MonoBehaviour
         moveDirection = direction;
     }
 }
-
-/*
-   File : Movement2D.cs
-   Desc
-    : 이동이 가능한 모든 오브젝트에 부착
-
-   Functions
-    : MoveTo() - 외부에서 호출해 이동 방향을 설정
-*/
