@@ -1,5 +1,5 @@
 # flyingShooterGame
 
-dev by Hyeontae Son
+Project Manage by Haraon Ryu
 
-produced by Haraon Ryu
+Develop by Hyeontae Son
