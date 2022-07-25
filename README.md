@@ -10,7 +10,7 @@ Developed by Hyeontae Son
 2. bonus enemy - reward, appear meter
 
 
-##[Develop To Do]
+## [Develop To Do]
 1. 1st wave - 0, 1st wave clear - 23,
     2nd wave - 30, 2nd wave clear - 53
     3rd wave - 60
