@@ -1,5 +1,5 @@
 # flyingShooterGame
 
-Project Manage by Harang Ryu
+Designed by Harang Ryu
 
-Develop by Hyeontae Son
+Developed by Hyeontae Son
