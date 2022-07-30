@@ -11,23 +11,20 @@ Developed by Hyeontae Son
 
 
 ## [Developer To Do]
-1. 1st wave - 0, 1st wave clear - 23,
-    2nd wave - 30, 2nd wave clear - 53
-    3rd wave - 60
+1. Enemy weak point
     
 2. player grace period
 
 3. ability setting
 
-    - player hp(default : 3)
+    - player hp viewer
     
     - enemy (hp, score, spawner)
+    
 4. boss alart
 
-5. player shooting
+5. Calluna amplification	=>    UpScroll 	   => double projectile
 
-6. Calluna amplification	=>    UpScroll 	   => double projectile
+6. Calluna solidarity	=>    DownScroll    => shield
 
-7. Calluna solidarity	=>    DownScroll    => shield
-
-8. gold system
+7. gold system
