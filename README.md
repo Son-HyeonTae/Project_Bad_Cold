@@ -15,12 +15,11 @@ Developed by Hyeontae Son
     2nd wave - 30, 2nd wave clear - 53
     3rd wave - 60
     
-2. enemy pattern
+2. player grace period
 
 3. ability setting
 
     - player hp(default : 3)
-    
     
     - enemy (hp, score, spawner)
 4. boss alart
