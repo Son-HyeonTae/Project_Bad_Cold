@@ -28,3 +28,7 @@ Developed by Hyeontae Son
 6. Calluna solidarity	=>    DownScroll    => shield
 
 7. gold system
+
+## Problems
+1. calluna solidarity => "Every projectile free" => is collision included?
+2. Currently, it cannot be destroyed from level 4 enemies.
