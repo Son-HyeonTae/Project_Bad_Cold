@@ -32,3 +32,4 @@ Developed by Hyeontae Son
 ## Problems
 1. calluna solidarity => "Every projectile free" => is collision included?
 2. Currently, it cannot be destroyed from level 4 enemies.
+3. Callunars, recharge condition, If player catch 60 enemies, will both ability charge up?
