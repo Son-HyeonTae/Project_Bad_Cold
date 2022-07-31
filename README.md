@@ -12,20 +12,12 @@ Developed by Hyeontae Son
 
 ## [Developer To Do]
 1. Enemy weak point
-    
-2. player grace period
 
 3. ability setting
-
-    - player hp viewer
     
-    - enemy (hp, score, spawner)
+    - enemy (score)
     
 4. boss alart
-
-5. Calluna amplification	=>    UpScroll 	   => double projectile
-
-6. Calluna solidarity	=>    DownScroll    => shield
 
 7. gold system
 
