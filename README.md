@@ -23,8 +23,8 @@ Developed by Hyeontae Son
 
 ## Problems
 1. calluna solidarity => "Every projectile free" => collision is not include.
-2. Currently, it cannot be destroyed from level 4 enemies.
 3. Callunars, if u kill over 60 enemy, u can choose what to use.
 4. boss appearance distance => 2 4 5
 5. projectile resize
 6. In Pause, display game point and gold
+7. Should SpaceshipUpgrade, WeaponUpgrade Scripts are different?
