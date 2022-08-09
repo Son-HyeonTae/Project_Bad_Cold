@@ -2,13 +2,13 @@ using UnityEngine;
 using TMPro;
 
 public class GoldViewer : MonoBehaviour {
-    private TextMeshProUGUI textGold;
+    private TextMeshProUGUI goldText;
 
     private void Awake() {
-        textGold = GetComponent<TextMeshProUGUI>();
+        goldText = GetComponent<TextMeshProUGUI>();
     }
 
     private void Update() {
-        textGold.text = GameManager.instance.gold + "";
+        goldText.text = GameManager.gameManager.Gold.ToString();
     }
 }

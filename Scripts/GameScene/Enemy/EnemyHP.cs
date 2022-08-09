@@ -4,7 +4,6 @@ public class EnemyHP : MonoBehaviour {
     [SerializeField]
     private float maxHP = 5;
     [SerializeField]
-    private int gold = 1;
     private float currentHP;
 
     private void Awake() {
@@ -17,7 +16,7 @@ public class EnemyHP : MonoBehaviour {
         if (currentHP <= 0) {
             Destroy(gameObject);
 
-            GameManager.instance.getGold(gold);
+            GameManager.gameManager.Gold += 1;
         }
     }
 }
