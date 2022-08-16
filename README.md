@@ -19,8 +19,6 @@ Developed by Hyeontae Son
     
 4. boss alart
 
-7. gold system
-
 ## Problems
 1. calluna solidarity => "Every projectile free" => collision is not include.
 3. Callunars, if u kill over 60 enemy, u can choose what to use.
