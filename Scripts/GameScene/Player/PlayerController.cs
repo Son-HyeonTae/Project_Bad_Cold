@@ -6,18 +6,20 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private KeyCode      keyCodeAttack = KeyCode.Space;
     [SerializeField]
-    private KeyCode      keyCodeCallnunaGracePeriod = KeyCode.DownArrow;
+    private KeyCode      keyCodeCallunaGracePeriod = KeyCode.DownArrow;
     [SerializeField]
-    private KeyCode      keyCodeCallnunaAmplification = KeyCode.UpArrow;
+    private KeyCode      keyCodeCallunaAmplification = KeyCode.UpArrow;
 
     private PlayerHP     playerHP;
     private Movement2D   movement2D;
     private PlayerWeapon playerWeapon;
+    private CallunaGuage callunaGuage;
 
     private void Awake() {
         playerHP     = GetComponent<PlayerHP>();
         movement2D   = GetComponent<Movement2D>();
         playerWeapon = GetComponent<PlayerWeapon>();
+        callunaGuage = GetComponent<CallunaGuage>();
     }
 
     private void Update() {
@@ -31,12 +33,14 @@ public class PlayerController : MonoBehaviour {
             playerWeapon.StopFiring();
         }
 
-        if (Input.GetKeyDown(keyCodeCallnunaGracePeriod)) {
+        if (Input.GetKeyDown(keyCodeCallunaGracePeriod)   && callunaGuage.fullCharge) {
             playerHP.ActivateCallunaGracePeriod();
+            callunaGuage.ResetCallunaGuage();
         }
         
-        if (Input.GetKeyDown(keyCodeCallnunaAmplification)) {
+        if (Input.GetKeyDown(keyCodeCallunaAmplification) && callunaGuage.fullCharge) {
             playerWeapon.ActivateCallunaAmplification();
+            callunaGuage.ResetCallunaGuage();
         }
     }
 
