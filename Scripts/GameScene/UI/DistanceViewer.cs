@@ -3,14 +3,14 @@ using TMPro;
 
 public class DistanceViewer : MonoBehaviour {
     [SerializeField]
-    private PlayerDistance  playerDistance;
+    private PlayerManager   playerManager;
     private TextMeshProUGUI textDistance;
 
     private void Awake() {
         textDistance = GetComponent<TextMeshProUGUI>();
-    }
+    }   
 
     private void Update() {
-        textDistance.text = playerDistance.Distance + " meters";
+        textDistance.text = playerManager.Distance + " meters";
     }
 }
