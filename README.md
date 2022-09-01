@@ -11,13 +11,9 @@ Developed by Hyeontae Son
 
 ## [Developer To Do]
 1. Enemy weak point
-2. ability setting
-   - enemy (score)
+2. At Start, enemy spawn is too early. i think
 3. boss alart
-4. In Pause, display game point and gold, go to main.
-5. Add Meteorite
 6. Boss Paturn
-7. ADD Game Point System
 
 ## Problems
 1. calluna solidarity => "Every projectile free" => collision is not include.
