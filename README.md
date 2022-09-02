@@ -11,12 +11,8 @@ Developed by Hyeontae Son
 
 ## [Developer To Do]
 1. Enemy weak point
-2. At Start, enemy spawn is too early. i think
+2. developer mode
 3. boss alart
-6. Boss Paturn
-
-## Problems
-1. calluna solidarity => "Every projectile free" => collision is not include.
-2. Callunars, if u kill over 60 enemy, u can choose what to use.
-3. boss appearance distance => 2 4 5
-4. projectile resize
+4. android connect
+5. Boss Paturn
+6. projectile resize
