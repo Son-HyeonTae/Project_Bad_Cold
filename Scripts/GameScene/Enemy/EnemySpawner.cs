@@ -3,10 +3,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    // GameData
     [SerializeField]
     private StageData     stageData;
     [SerializeField]
     private PlayerManager playerManager;
+    [SerializeField]
+    private BossStage     bossStage;
+
+    // Prefabs
     [SerializeField]
     private GameObject[]  enemyPrefabs;
     [SerializeField]
@@ -16,33 +21,42 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject    meteoritePrefab;
 
+    // Spawn Percentage
     [SerializeField]
     private int  meteoriteSpawnPercentage = 25;
     [SerializeField]
     private int  bonusBoxSpawnPercentage = 5;
-    private int  distance;
-    private int  enemyType;
+    
+    // Flags
     private bool enemySpawnFlag;
     private bool bonusBoxSpawnFlag;
+
+    private int  distance;
+    private int  enemyType;
     private int  waveCount; // For Bonus Box
 
     private void Awake() {
-        WaveSpawn();
-        distance = playerManager.Distance;
+        // WaveSpawn();
     }
 
     private void Update() {
         distance = playerManager.Distance;
 
-        if (distance % 30f == 0 && !enemySpawnFlag)
+        if (distance % 30f == 0 && !enemySpawnFlag) {
             WaveSpawn();
-        if (distance % 30f != 0)
+        }
+        if (distance % 30f != 0) {
             enemySpawnFlag = false;
+        }
 
         if (distance >= 500 ) enemyType = 1;
-        if (distance >= 1000) enemyType = 2;
-        if (distance >= 2000) enemyType = 3; 
+        if (distance >= 1500) enemyType = 2;
+        if (distance >= 2500) enemyType = 3; 
         if (distance >= 4000) enemyType = 4;
+
+        if (distance == 1000f && playerManager.moveFlag == false) {
+            bossStage.spawnfirstBoss();
+        }
     }
 
     private void WaveSpawn() {
