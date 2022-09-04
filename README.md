@@ -19,11 +19,11 @@ Developed by Hyeontae Son
 1.0.2 - 디버깅
  1. 플레이어 순간이동 버그 수정
  2. 잡몹 체력 조정 [5 -> 15, 10 -> 30, 15 -> 100, 30 -> 200, 60 -> 400]
+ 3. 플레이어 발사체 75% 크기로 축소
 
 ## [Developer To Do]
 1. Enemy weak point
 2. developer mode
 3. boss alart
-4. android connect
-5. Boss Paturn
-6. projectile resize
+4. Boss Paturn
+5. projectile resize
