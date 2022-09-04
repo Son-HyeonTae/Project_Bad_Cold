@@ -32,11 +32,11 @@ public class PlayerWeapon : MonoBehaviour {
     private IEnumerator TryAttack() {
         while (true) {
             if (CallunaAmplification == true) {
-                Instantiate(projectilePrefab, transform.position + Vector3.left * 0.3f, Quaternion.identity);
-                Instantiate(projectilePrefab, transform.position + Vector3.right * 0.3f, Quaternion.identity);
+                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0f) + Vector3.left * 0.3f, Quaternion.identity);
+                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0f) + Vector3.right * 0.3f, Quaternion.identity);
             }
             else {
-                Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0f), Quaternion.identity);
             }
 
             yield return new WaitForSeconds(attackRate);

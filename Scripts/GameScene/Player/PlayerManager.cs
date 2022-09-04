@@ -2,9 +2,10 @@ using System.Collections;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
-    public int playerGold;
-    public int playerScore;
-    public int killScore;
+    public int  playerGold;
+    public int  playerScore;
+    public int  killScore;
+    public bool moveFlag;
 
     [SerializeField]
     private int distance;
@@ -13,7 +14,7 @@ public class PlayerManager : MonoBehaviour {
         get => distance;
     }
 
-    private void Awake() {
+    void Awake() {
         StartCoroutine("GoForward");
     }
     
@@ -22,13 +23,15 @@ public class PlayerManager : MonoBehaviour {
                             ((distance * 0.01f) + killScore) * (GameManager.gameManager.SpaceshipLevel * 0.1f));
     }
 
-    // public void Go() {
-    //     StartCoroutine("GoForward");
-    // }
+    public  void GoDistance() {
+        StartCoroutine("GoForward");
+        moveFlag = false;
+    }
 
-    // public void Stop() {
-    //     StopCoroutine("GoForward");
-    // }
+    public  void StopDistance() {
+        StopCoroutine("GoForward");
+        moveFlag = true;
+    }
 
     private IEnumerator GoForward() {
         while (true) {
