@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    public static GameManager gameManager;
+    
     [SerializeField]
     private int weaponLevel = 1;
     public  int WeaponLevel {
@@ -17,13 +19,15 @@ public class GameManager : MonoBehaviour {
     }
 
     [SerializeField]
-    private int gold = 0;
+    private int gold;
     public  int Gold {
         set => gold = Mathf.Clamp(value, 0, 10000);
         get => gold = Mathf.Clamp(gold,  0, 10000);
     }
 
-    public static GameManager gameManager;
+    [SerializeField]
+    public int[] score;
+    public int   recentScore;
 
     private void Awake() {
         if (gameManager == null) {
@@ -33,6 +37,8 @@ public class GameManager : MonoBehaviour {
         else {
             Destroy(this);
         }
+
+        score = new int[6];
     }
 
     public void SpendGold(int upgradeCost) {
@@ -45,5 +51,17 @@ public class GameManager : MonoBehaviour {
             GameManager.gameManager.gold--;
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public void SortScore() {
+        for(int i = 0; i < 6; i++) {
+			for (int j = i+1; j < 6; j++) {
+				if(score[i] < score[j]) {
+					int temp = score[j];
+					score[j] = score[i];
+					score[i] = temp; 
+				}
+			}
+		}
     }
 }
