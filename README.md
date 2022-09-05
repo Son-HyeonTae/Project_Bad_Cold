@@ -35,3 +35,4 @@ Developed by Hyeontae Son
 1. Enemy weak point
 2. boss alart
 3. Boss Paturn
+4. Don't turn screen on smartphone
