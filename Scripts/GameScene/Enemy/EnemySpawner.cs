@@ -62,14 +62,22 @@ public class EnemySpawner : MonoBehaviour
     private void WaveSpawn() {
         float positionX = stageData.LimitMin.x-0.07f; // aim to proper position
 
+        int weakPoint = Random.Range(0, 6);
+
         for (int i = 0; i < 6; i++) {
             Vector3 position = new Vector3(positionX, stageData.LimitMax.y + 1.0f, 0.0f);
-            GameObject enemyClone = Instantiate(enemyPrefabs[enemyType], position, Quaternion.identity);
+            if (i == weakPoint) {
+                GameObject enemyClone = Instantiate(enemyPrefabs[Mathf.Clamp(enemyType - 1, 0, 4)], position, Quaternion.identity);
+            }
+            else {
+                GameObject enemyClone = Instantiate(enemyPrefabs[enemyType], position, Quaternion.identity);
+            }
             positionX += 0.95f;
         }
 
         enemySpawnFlag = true;
         
+        //
         if ((Random.Range(1, 101) <= bonusBoxSpawnPercentage) && (distance >= 1000m) && (!bonusBoxSpawnFlag)) {
             bonusBoxSpawnFlag = true;
             StartCoroutine("SpawnBonusBox");
@@ -77,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
         if (bonusBoxSpawnFlag) {
             waveCount++;
             if (waveCount >= 5) {
-            waveCount = 0;
+            waveCount         = 0;
             bonusBoxSpawnFlag = false;
             Destroy(GameObject.FindWithTag("BonusBox"));
             }
@@ -95,12 +103,12 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnMeteorite() {
         int randomLine = Random.Range(0, 6);
-        GameObject alartLine = Instantiate(alartLinePrefab, new Vector3(-2.37f+(0.95f*randomLine), 0, 0), Quaternion.identity);
+        GameObject alartLine = Instantiate(alartLinePrefab, new Vector3(-2.37f+(0.95f * randomLine), 0, 0), Quaternion.identity);
 
         yield return new WaitForSeconds(2.5f);
 
         Destroy(alartLine);
 
-        Instantiate(meteoritePrefab, new Vector3(-2.37f+(0.95f*randomLine), stageData.LimitMax.y + 1.0f, 0), Quaternion.identity);
+        Instantiate(meteoritePrefab, new Vector3(-2.37f+(0.95f * randomLine), stageData.LimitMax.y + 1.0f, 0), Quaternion.identity);
     }
 }
