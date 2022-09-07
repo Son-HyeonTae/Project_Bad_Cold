@@ -9,16 +9,16 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField]
     private float CallunaAmplificationTime = 10f;
     
-    private bool  CallunaAmplification = false;
+    private bool  CallunaAmplificationFlag = false;
 
     public void ActivateCallunaAmplification() {
-        StartCoroutine("CallunaAmplificationCoroutine");
+        StartCoroutine("CallunaAmplification");
     }
 
-    private IEnumerator CallunaAmplificationCoroutine() {
-        CallunaAmplification = true;
+    private IEnumerator CallunaAmplification() {
+        CallunaAmplificationFlag = true;
         yield return new WaitForSeconds(CallunaAmplificationTime);
-        CallunaAmplification = false;
+        CallunaAmplificationFlag = false;
     }
 
     public void StartFiring() {
@@ -31,12 +31,12 @@ public class PlayerWeapon : MonoBehaviour {
 
     private IEnumerator TryAttack() {
         while (true) {
-            if (CallunaAmplification == true) {
-                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0f) + Vector3.left * 0.3f, Quaternion.identity);
-                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0f) + Vector3.right * 0.3f, Quaternion.identity);
+            if (CallunaAmplificationFlag == true) {
+                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.1f, 0f) + Vector3.left * 0.3f, Quaternion.identity);
+                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.1f, 0f) + Vector3.right * 0.3f, Quaternion.identity);
             }
             else {
-                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y, 0f), Quaternion.identity);
+                Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + 0.3f, 0f), Quaternion.identity);
             }
 
             yield return new WaitForSeconds(attackRate);

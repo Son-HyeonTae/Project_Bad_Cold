@@ -4,18 +4,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private StageData    stageData;
     [SerializeField]
-    private KeyCode      keyCodeCallunaGracePeriod = KeyCode.DownArrow;
-    [SerializeField]
-    private KeyCode      keyCodeCallunaAmplification = KeyCode.UpArrow;
-    [SerializeField]
     private GameObject   player;
 
+    private Vector2      dragStartPos;
     private PlayerHP     playerHP;
     private Movement2D   movement2D;
     private PlayerWeapon playerWeapon;
     private CallunaGuage callunaGuage;
-
-    private bool isAttack;
 
     private void Awake() {
         playerHP     = GetComponent<PlayerHP>();
@@ -25,32 +20,35 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        if (Time.timeScale != 0) {
-            if (Input.touchCount > 0) {
-                Touch touch = Input.GetTouch(0);
+        if ((Input.touchCount > 0) && (Time.timeScale != 0)) {
+            Touch   touch    = Input.GetTouch(0);
 
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                touchPosition.y = -3.7f;
-                transform.position = Vector3.MoveTowards(transform.position, touchPosition, movement2D.moveSpeed);
-                // transform.position = touchPosition;
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            touchPosition.y = -3.7f;
+            transform.position = Vector3.MoveTowards(transform.position, touchPosition, movement2D.moveSpeed);
 
-                if (Input.GetMouseButtonDown(0)) {
+            switch (touch.phase) {
+                case TouchPhase.Began:
+                    dragStartPos = touch.position;
                     playerWeapon.StartFiring();
-                }
-                else if(Input.GetMouseButtonUp(0)) {
-                    playerWeapon.StopFiring();
-                }
-            }
-        
+                    break;
+                case TouchPhase.Moved:
+                    float movedPos = touch.position.y - dragStartPos.y;
 
-            if (Input.GetKeyDown(keyCodeCallunaGracePeriod)   && callunaGuage.fullCharge) {
-                playerHP.ActivateCallunaGracePeriod();
-                callunaGuage.ResetCallunaGuage();
-            }
-            
-            if (Input.GetKeyDown(keyCodeCallunaAmplification) && callunaGuage.fullCharge) {
-                playerWeapon.ActivateCallunaAmplification();
-                callunaGuage.ResetCallunaGuage();
+                    if (callunaGuage.fullCharge && (Mathf.Abs(movedPos) > 500.0f)) {
+                        if (movedPos > 0f) {
+                            playerWeapon.ActivateCallunaAmplification();
+                            callunaGuage.ResetCallunaGuage();
+                        }
+                        else if (movedPos < 0f) {
+                            playerHP.ActivateCallunaGracePeriod();
+                            callunaGuage.ResetCallunaGuage();
+                        }
+                    }
+                    break;
+                case TouchPhase.Ended:
+                    playerWeapon.StopFiring();
+                break;
             }
         }
     }

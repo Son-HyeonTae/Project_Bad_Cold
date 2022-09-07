@@ -1,13 +1,16 @@
-using System.Collections;
+ using System.Collections;
 using UnityEngine;
 
 public class PlayerHP : MonoBehaviour {
+
     [SerializeField]
     private GameObject gameOver;
     [SerializeField]
     private GameObject callunaGracePeriod;
     [SerializeField]
-    private float CallunaGracePeriodTime = 3f;
+    private float callunaGracePeriodTime = 3f;
+
+    //HP
     [SerializeField]
     private float          maxHP = 3;
     private float          currentHP;
@@ -15,24 +18,21 @@ public class PlayerHP : MonoBehaviour {
         set => currentHP = Mathf.Max(0, value);
         get => currentHP;
     }
-    private SpriteRenderer spriteRenderer;
 
+    // Player State
+    [HideInInspector]
+    private State playerState = State.Normal;
     private enum State {
         Normal,
         Damaged
     }
 
-    [HideInInspector]
-    private State playerState = State.Normal;
+    private SpriteRenderer spriteRenderer;
+    public  bool           callunaGracePeriodFlag;
 
     private void Awake() {
         currentHP      = maxHP;
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    public void ActivateCallunaGracePeriod() {
-        callunaGracePeriod.SetActive(true);
-        StartCoroutine("CallunaGracePeriodCoroutine");
     }
 
     public void TakeDamage(float damage) {
@@ -67,10 +67,20 @@ public class PlayerHP : MonoBehaviour {
         playerState          = State.Normal;
     }
 
+
+    // Grace Period
+    public void ActivateCallunaGracePeriod() {
+        callunaGracePeriod.SetActive(true);
+        StartCoroutine("CallunaGracePeriodCoroutine");
+    }
+
     private IEnumerator CallunaGracePeriodCoroutine() {
-        playerState = State.Damaged;
-        yield return new WaitForSeconds(CallunaGracePeriodTime);
-        playerState = State.Normal;
+        // playerState = State.Damaged;
+        callunaGracePeriodFlag = true;
+        yield return new WaitForSeconds(callunaGracePeriodTime);
+        // playerState = State.Normal;
+        callunaGracePeriodFlag = false;
+
         callunaGracePeriod.SetActive(false);
     }
 }
