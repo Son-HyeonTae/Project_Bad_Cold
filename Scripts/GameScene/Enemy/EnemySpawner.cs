@@ -55,12 +55,15 @@ public class EnemySpawner : MonoBehaviour
         if (distance >= 4000) enemyType = 4;
 
         if (distance == 1000f && playerManager.moveFlag == false) {
-            bossStage.spawnfirstBoss();
+            bossStage.spawnBoss(0); // First Boss
+        }
+        if (distance == 2999f && playerManager.moveFlag == false) {
+            bossStage.spawnBoss(1); // Second Boss
         }
     }
 
     private void WaveSpawn() {
-        float positionX = stageData.LimitMin.x-0.07f; // aim to proper position
+        float positionX = stageData.LimitMin.x-0.07f; // Aim to Proper Position
 
         int weakPoint = Random.Range(0, 6);
 
@@ -77,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
 
         enemySpawnFlag = true;
         
-        //
+        // BonusBox
         if ((Random.Range(1, 101) <= bonusBoxSpawnPercentage) && (distance >= 1000m) && (!bonusBoxSpawnFlag)) {
             bonusBoxSpawnFlag = true;
             StartCoroutine("SpawnBonusBox");
@@ -91,11 +94,14 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
+        // Meteorite
         if (Random.Range(1, 101) <= meteoriteSpawnPercentage) {
             StartCoroutine("SpawnMeteorite");
         }
     }
 
+
+    // Coroutines
     private IEnumerator SpawnBonusBox() {
         yield return new WaitForSeconds(0.5f);
         GameObject bonusBox = Instantiate(bonusBoxPrefab, new Vector3(0, stageData.LimitMax.y + 1.0f, 0), Quaternion.identity);
