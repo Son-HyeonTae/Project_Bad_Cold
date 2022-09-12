@@ -44,7 +44,3 @@ Developed by Hyeontae Son
  1. 인트로 화면 추가
  2. 칼루나 게이지 UI 변경
  3. 
- 
-## [Developer To Do]
-2. boss alart
-4. Don't turn screen on smartphone
