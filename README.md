@@ -43,4 +43,3 @@ Developed by Hyeontae Son
 **1.1.2 - UI 개선**
  1. 인트로 화면 추가
  2. 칼루나 게이지 UI 변경
- 3. 
