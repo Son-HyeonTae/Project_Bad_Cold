@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
     private PlayerWeapon playerWeapon;
     private CallunaGuage callunaGuage;
 
+    private KeyCode keyCodeAttack = KeyCode.Space;
+
     private void Awake() {
         playerHP     = GetComponent<PlayerHP>();
         movement2D   = GetComponent<Movement2D>();
@@ -20,6 +22,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
+        float x = Input.GetAxisRaw("Horizontal");
+        movement2D.MoveTo(new Vector3(x, 0, 0));
+        if(Input.GetKeyDown(keyCodeAttack)) {
+            playerWeapon.StartFiring();
+        }
+        else if(Input.GetKeyUp(keyCodeAttack)) {
+            playerWeapon.StopFiring();
+        }
+
         if ((Input.touchCount > 0) && (Time.timeScale != 0)) {
             Touch   touch    = Input.GetTouch(0);
 

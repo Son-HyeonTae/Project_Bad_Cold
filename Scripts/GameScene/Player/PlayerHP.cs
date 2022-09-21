@@ -75,10 +75,8 @@ public class PlayerHP : MonoBehaviour {
     }
 
     private IEnumerator CallunaGracePeriodCoroutine() {
-        // playerState = State.Damaged;
         callunaGracePeriodFlag = true;
         yield return new WaitForSeconds(callunaGracePeriodTime);
-        // playerState = State.Normal;
         callunaGracePeriodFlag = false;
 
         callunaGracePeriod.SetActive(false);

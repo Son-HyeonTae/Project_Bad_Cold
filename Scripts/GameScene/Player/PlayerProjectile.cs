@@ -8,6 +8,16 @@ public class PlayerProjectile : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if (collision.CompareTag("BossShield")) {
+            collision.GetComponent<BossShieldHP>().TakeDamage(GameManager.gameManager.WeaponLevel);
+
+            Destroy(gameObject);
+        }
+
+        if (collision.CompareTag("BossShieldBlinder")) {
+            Destroy(gameObject);
+        }
+
         if (collision.CompareTag("Enemy")) {
             collision.GetComponent<EnemyHP>().TakeDamage(GameManager.gameManager.WeaponLevel);
 
@@ -19,5 +29,6 @@ public class PlayerProjectile : MonoBehaviour {
 
             Destroy(gameObject);
         }
+        
     }
 }
