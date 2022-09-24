@@ -50,3 +50,7 @@ Developed by Hyeontae Son
  2. 아이템 등장
     * Time Slow     : 10초간 적 몹 스폰 1/2, 속도 1/2
     * Double Credit : 10초간 크레딧 획득 2배
+    
+**1.2.1 - 어플 종료**
+ 1. 어플리케이션 종료 가능
+ 2. 보스 등장 전 경고문구 
