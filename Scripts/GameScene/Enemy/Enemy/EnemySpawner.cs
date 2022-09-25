@@ -62,10 +62,10 @@ public class EnemySpawner : MonoBehaviour
         if (distance >= 4000) enemyType = 4;
 
         if (distance == 1000f && playerManager.moveFlag == false) {
-            bossStage.spawnBoss(0); // First Boss
+            bossStage.StartCoroutine("spawnBoss", 0); // First Boss
         }
         if (distance == 2999f && playerManager.moveFlag == false) {
-            bossStage.spawnBoss(1); // Second Boss
+            bossStage.StartCoroutine("spawnBoss", 1); // Second Boss
         }
     }
 
@@ -126,12 +126,16 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public IEnumerator TimeSlowItemActivate() {
-        GameObject background = Instantiate(timeSlowBackgroundPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        enemySpawnDistance = 60f;
-        enemyMoveSpeed = 2f;
-        yield return new WaitForSeconds(10f);
-        enemySpawnDistance = 30f;
-        enemyMoveSpeed = 4f;
-        Destroy(background);
+        if (timeSlowFlag == false) {
+            timeSlowFlag = true;
+            GameObject background = Instantiate(timeSlowBackgroundPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            enemySpawnDistance = 60f;
+            enemyMoveSpeed = 2f;
+            yield return new WaitForSeconds(10f);
+            enemySpawnDistance = 30f;
+            enemyMoveSpeed = 4f;
+            Destroy(background);
+            timeSlowFlag = false;
+        }
     }
 }
