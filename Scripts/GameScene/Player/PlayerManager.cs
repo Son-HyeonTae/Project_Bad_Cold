@@ -51,9 +51,11 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public IEnumerator DoubleCreditItemActivate() {
-        doubleCreditFlag = true;
-        yield return new WaitForSeconds(10.0f);
-        doubleCreditFlag = false;
+        if (doubleCreditFlag == false) {
+            doubleCreditFlag = true;
+            yield return new WaitForSeconds(10.0f);
+            doubleCreditFlag = false;
+        }
     }
 
     public void GetKillScore(int score) {
