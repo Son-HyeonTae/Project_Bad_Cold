@@ -1,8 +1,8 @@
-# Project_Bad_Cold
+# Project_Super_Nova
 
-Designed by Harang Ryu
+Designer - Harang Ryu
 
-Developed by Hyeontae Son
+Developer - Hyeontae Son
 
 ## [Version]
 **1.0.1 - 최초 버전**
