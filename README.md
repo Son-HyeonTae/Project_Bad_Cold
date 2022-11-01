@@ -5,7 +5,7 @@ Designer - Harang Ryu
 Developer - Hyeontae Son
 
 ## [Version]
-**1.0.1 - 최초 버전**
+**1.0.1 - First**
  1. 메인 UI      [크레딧, 1~5순위 점수 기록]
  2. 업그레이드    [무기 : 공격 + 1, 우주선 : 점수 +0.1%]
  3. 플레이어
